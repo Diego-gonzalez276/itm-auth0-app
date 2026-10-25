@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis datos - ITM</title>
+</head>
+<body>
+
+    <h1>Mis datos personales</h1>
+
+    <p th:if="${mensaje}" th:text="${mensaje}"></p>
+
+    <form th:action="@{/perfil}"
+          th:object="${datos}" method="post">
+
+        <label for="tipoDocumento">Tipo de documento</label>
+        <select id="tipoDocumento" th:field="*{tipoDocumento}">
+            <option value="">Seleccione...</option>
+            <option value="CC">Cédula de ciudadanía</option>
+            <option value="CE">Cédula de extranjería</option>
+            <option value="TI">Tarjeta de identidad</option>
+            <option value="PASAPORTE">Pasaporte</option>
+        </select>
+        <p th:if="${#fields.hasErrors('tipoDocumento')}"
+           th:errors="*{tipoDocumento}"></p>
+
+        <label for="numeroDocumento">Número de documento</label>
+        <input id="numeroDocumento"
+               type="text"
+               th:field="*{numeroDocumento}">
+        <p th:if="${#fields.hasErrors('numeroDocumento')}"
+           th:errors="*{numeroDocumento}"></p>
+
+        <label for="direccion">Dirección</label>
+        <input id="direccion"
+               type="text"
+               th:field="*{direccion}">
+        <p th:if="${#fields.hasErrors('direccion')}"
+           th:errors="*{direccion}"></p>
+
+        <label for="telefono">Teléfono</label>
+        <input id="telefono"
+               type="tel"
+               th:field="*{telefono}">
+        <p th:if="${#fields.hasErrors('telefono')}"
+           th:errors="*{telefono}"></p>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    <p><a th:href="@{/inicio}">Volver al inicio</a></p>
+
+</body>
+</html>

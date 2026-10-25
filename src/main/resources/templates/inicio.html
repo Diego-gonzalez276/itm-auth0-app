@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - ITM</title>
+</head>
+<body>
+    <h1>Bienvenido</h1>
+
+    <p>
+        Usuario:
+        <span th:text="${nombre}">Nombre</span>
+    </p>
+
+    <p>
+        Correo:
+        <span th:text="${correo}">correo@ejemplo.com</span>
+    </p>
+
+    <a th:href="@{/perfil}">Modificar mis datos personales</a>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Cerrar sesión</button>
+    </form>
+</body>
+</html>
